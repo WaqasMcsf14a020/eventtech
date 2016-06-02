@@ -1,0 +1,37 @@
+﻿@model IEnumerable<eventTech.Models.Package>
+
+<style>
+    .lnk{
+        color: #FFF;
+        text-decoration: none;
+        font-weight: normal;
+        margin-left: 130px;
+    }
+    .customDiv {
+        width: 300px;
+        height: 150px;
+        background: #28d;
+        transition: all 0.3s ease;
+        border-radius: 3%;
+        padding:40px;
+        float:left;
+        margin:18px;
+    }
+        .customDiv:hover {
+            border-radius: 50%;
+        }
+    .titleText {
+        color: white;
+        font-family: Georgia;
+    }
+</style>
+
+@foreach (var item in Model)
+{
+    <div class="customDiv">
+        <span class="titleText">
+            @Html.DisplayFor(modelItem => item.Title)<br /><br /><br />
+        </span>
+        @Html.ActionLink("See more..", "PackageDetails", new { id = item.PackageId }, new { @class = "lnk" })
+    </div>
+}

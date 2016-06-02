@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-left:120px;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .li {
+        float: left;
+    }
+
+        .li .a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .li #admin {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            .li .a:hover:not(.active) {
+                background-color: #111;
+            }
+
+    .active {
+        background-color: #4CAF50;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#admin").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Admin/Index", null, function (result) {
+                $("#content").html(result);
+            });
+        })
+        
+        $("#admin").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Client/Index", null, function (result) {
+                $("#clientdiv").html(result);
+            });
+        });
+
+        $("#company").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Company/Index",null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#package").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Package/Index", null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#organizer").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Organizer/OrganizersWithoutLayout", null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#client").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Client/Index", null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#feedback").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Feedback/Index", null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#event").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Event/Index", null, function (result) {
+                $("#content").html(result);
+            });
+        });
+
+        $("#client1").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Client/Index", null, function (result) {
+                $("#clientdiv").html(result);
+            });
+        });
+        $("#event1").on("click", function (event) {
+            event.preventDefault();
+            $.get("/Event/Index", null, function (result) {
+                $("#clientdiv").html(result);
+            });
+        });
+    });
+
+    $("#feedback1").on("click", function (event) {
+        event.preventDefault();
+        $.get("/Feedback/Index", null, function (result) {
+            $("#clientdiv").html(result);
+        });
+    });
+
+    $("#rating").on("click", function (event) {
+        event.preventDefault();
+        $.get("/Orgnaizer/Rating", null, function (result) {
+            $("#clientdiv").html(result);
+        });
+    });
+</script>
+    @{
+        if (Session["Designation"] != null && Session["Designation"] == "admin")
+        {
+            <ul class="ul">
+                <li class="li"><a id="admin" class="active" href="/Admin/Index">Admin</a></li>
+                <li class="li"><a id="company" class="a" href="/Company/Index">Companies</a></li>
+                <li class="li"><a id="package" class="a" href="/Package/Index">Packages</a></li>
+                <li class="li"><a id="organizer" class="a" href="/Organizer/OrganizersWithoutLayout">Organizers</a></li>
+                <li class="li"><a id="client" class="a" href="/Client/Index">Clients</a></li>
+                <li class="li"><a id="event" class="a" href="/Event/Index">Events</a></li>
+                <li class="li"><a id="feedback" class="a" href="/Feedback/Index">Feedbacks</a></li>
+            </ul>
+        }
+        else if (Session["Designation"] != null && Session["Designation"] == "user")
+        {
+            <ul class="ul">
+                <li class="li"><a id="client1" class="a" href="/Client/Index">Clients</a></li>
+                <li class="li"><a id="event1" class="a" href="/Event/Index">Events</a></li>
+                <li class="li"><a id="feedback1" class="a" href="/Feedback/Index">Feedbacks</a></li>
+                <li class="li"><a id="rating" class="a" href="/Organizer/Rating">Rate Organizer</a></li>
+            </ul>
+        }
+}
+@{
+    if (Session["Designation"] != null && Session["Designation"] == "admin")
+    {
+        <div id="content"></div>        
+    }
+    else if (Session["Designation"] != null && Session["Designation"] == "user")
+    {
+        <div id="clientdiv"></div>
+    }
+}    
+

@@ -1,0 +1,36 @@
+﻿@model eventTech.Models.Package
+
+@{
+    ViewBag.Title = "PackageDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PackageDetails</h2>
+
+<fieldset>
+    <legend>Package</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to home..", "Index", "Home")
+</p>

@@ -1,0 +1,61 @@
+﻿@model eventTech.Models.Payment
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Payment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaymentId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PaymentId", "Select Event")
+            @Html.ValidationMessageFor(model => model.PaymentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientId)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ClientId, new { @readonly="readonly", @id="ClientId"})
+            @Html.ValidationMessageFor(model => model.ClientId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<input type="hidden" id="hidden" value="@Session["username"]" />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $(document).ready(function () {
+        
+        var v = $("#hidden").val();
+        $("#ClientId").val(v);
+    })
+</script>

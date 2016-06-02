@@ -1,0 +1,42 @@
+﻿@model IEnumerable<eventTech.Models.ManageEvent>
+
+<style>
+    .btn {
+        margin:5px;
+        margin-left:30px;
+        background-color:#f1e1e1;
+    }
+        .btn:hover {
+            background-color:#ba7777;
+        }
+    .eventname {
+        background-color:#ffd800;
+        color:white;
+        width:130px;
+        height:50px;
+        border-radius:3px;
+        margin-bottom:5px;
+        padding:10px;
+    }
+</style>
+
+<table>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    
+    @foreach (var item in Model.Where(x => x.Status == "Pending"))
+{
+    <tr>
+        <td>
+            <h3 class="eventname">
+                @Html.DisplayFor(modelItem => item.EventName)
+            </h3>
+        </td>
+        <td>
+           @Html.ActionLink("Approve Request", "ApproveRequest", "Event", new { id = item.EventId }, new {@class="btn"}) 
+        </td>
+    </tr>
+}
+</table>

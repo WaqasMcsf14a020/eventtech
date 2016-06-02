@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lnk {
+        width:200px;
+        height:150px;
+    }
+    .mainDiv {
+        padding:5px;
+        height: auto;
+        width: auto;
+        background-color: #d6b8b8;
+    }
+     .customDiv {
+        width: 200px;
+        height: 150px;
+        background: #28d;
+        transition: all 0.3s ease;
+        border-radius: 3%;
+        padding: 40px;
+        margin: 18px;
+        margin-left:100px;
+        color:white;
+    }
+        .customDiv:hover {
+            border-radius: 50%;
+        }
+
+</style>
+
+<div class="mainDiv">
+
+    <div style="float:left; height:500px;width:450px;margin-top:30px;padding:15px;">
+        <h2 style="color:#0094ff;font-family:Georgia; margin-left:100px;margin-top:0px;">Registration Panel</h2>
+        <a class="lnk" href="/Company/Index">
+            <div class="customDiv">
+                <h2>
+                    Register Company
+                </h2>
+            </div>
+        </a>
+        <a href="/Organizer/Index">
+            <div class="customDiv">
+                <h2>
+                    Register Organizer
+                </h2>
+            </div>
+        </a>
+    </div>
+    <div style="float:left; margin-left:100px; margin-top:30px; padding:15px;">
+        <h3 style="margin-left: 10px; color:#0094ff; font-family: Georgia; font: 200px;">Organizer Login</h3>
+        @{Html.RenderPartial("/Views/Organizer/_Login.cshtml");}
+    </div>
+    <div class="clearfix"></div>
+</div>

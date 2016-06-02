@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<link href="~/Content/style.css" rel="stylesheet" />
+
+<div id="div2" class="divAdmin">
+    <script>
+        $(function () {
+
+            $("#loginform").on("click", function () {
+                var result = true;
+                if ($("#t1").val() == 0) {
+                    $("#dialog").text("Enter Username");
+                    result = false;
+                }
+                if ($("#t2").val() == 0) {
+                    $("#dialog").text("Enter Password");
+                    result = false;
+                }
+                return result;
+            });
+        });
+    </script>
+    <div class="login" style="width:340px; margin-top:0px;">
+        <div class="login-triangle"></div>
+
+        <h2 class="login-header">Login here</h2>
+
+        <form id="loginform" style="height:300px;" class="login-container" method="post" action="/Organizer/Login">
+            <p><input class="form-control" id="t1" name="loginname" type="email" placeholder="Email" style="width:220px; height:40px; font-family:Georgia; " /></p>
+            <p><input class="form-control" id="t2" name="password" type="password" placeholder="Password" style="width: 220px; height: 40px; font-family: Georgia;" /></p>
+            <p><input id="mybutton" type="submit" value="Log in" style=" display: inline; float:left; width: 80px; height: 50px;" /></p><span id="dialog" style=" margin-left:5px; display:inline; float:left;color:red;">@ViewData["error"]</span>
+        </form>
+    </div>
+</div>
+<div class="clearfix"></div>
