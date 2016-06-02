@@ -2,9 +2,34 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<div style="background-color:indianred
+    " class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2>List of Feedback</h2><br />
+        @if (Model.Count() == 0)
+        {
+            <h3>No any Feedback Exists</h3>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <span style="font-weight:800">Company Name:</span> @item.Name <br />
+                <span style="font-weight:800">Email:</span> @item.Email <br />
+                <span style="font-weight:800">Phone: </span> @item.Message <br />
+                 @Html.ActionLink("Edit | ", "Edit", new { id=item.FeedbackId }) 
+                 @Html.ActionLink("Details | ", "Details", new { id=item.FeedbackId }) 
+                 @Html.ActionLink("Delete ", "Delete", new { id=item.FeedbackId })
+                <hr style="height:2px; background-color:black" />
+            }
+        }
+    </div>
+    <div class="col-xs-3"></div>
+</div>
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -42,4 +67,4 @@
     </tr>
 }
 
-</table>
+</table>*@

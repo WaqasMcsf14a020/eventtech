@@ -4,15 +4,28 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Edit</h2>
-
+@*<div class="row" style="background-color:indianred">
+<div class="col-md-3"></div>
+    <div class="col-md-6">
+<h2>Edit Company</h2><br />
+     @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <input type="hidden" name="CompanyId" value="@Model.CompanyId" />
+        <span>Name: </span><input type="text" value="@Model.Name" name="Name" /><br /><br />
+        <span>Email: </span><input type="text" value="@Model.Email" name="Email" /><br /><br />
+        <span>License No.: </span><input type="text" value="@Model.License" name="License" /><br /><br />
+        <span>Phone No.: </span><input type="text" value="@Model.Phone" name="Phone" /><br /><br />
+        <span>City: </span><input type="text" value="@Model.City" name="City" /><br /><br />
+        <span>Organizer Id: </span><input type="text" value="@Model.OrganizerId" name="OrganizerId" /><br /><br />*@
+<div class="row" style="background-color:indianred">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Company</legend>
+        
 
         @Html.HiddenFor(model => model.CompanyId)
 
@@ -22,7 +35,7 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
-        </div>
+        </div><br />
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Email)
@@ -63,17 +76,18 @@
             @Html.DropDownList("OrganizerId", String.Empty)
             @Html.ValidationMessageFor(model => model.OrganizerId)
         </div>
-
-        <p>
             <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
+        
+     }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+        </div>
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+</div>
+<div class="col-md-3"></div>

@@ -4,8 +4,30 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
+<div style="background-color:indianred
+    " class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2>Detail</h2><br />
+        
+           
+            
+                <span style="font-weight:800">Company Name:</span> @Model.FirstName <br />
+                <span style="font-weight:800">Email:</span> @Model.LastName <br />
+                <span style="font-weight:800">Phone: </span> @Model.Email <br />
+                <span style="font-weight:800">Password: </span> @Model.Password <br />
+                <span style="font-weight:800">Confirm Password: </span> @Model.ConfirmPassword <br />
+                <span style="font-weight:800">Company License No.: </span> @Model.Phone <br />
+                <span style="font-weight:800">City: </span>@Model.Address<br />
+                @Html.ActionLink("Edit", "Edit", new { id=Model.ClientId }) |
+                @Html.ActionLink("Back to List", "Index")
+                <hr style="height:2px; background-color:black" />
+            
+        
+    </div>
+    <div class="col-xs-3"></div>
+</div>
+@*<h2>Details</h2>
 
 <fieldset>
     <legend>Client</legend>
@@ -62,4 +84,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ClientId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
